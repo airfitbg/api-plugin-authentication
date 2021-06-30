@@ -52,11 +52,13 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - build
+      - build:
+          context: reaction
       - lint:
           requires:
             - build
       - deploy:
+          context: reaction
           requires:
             - lint
           filters:
